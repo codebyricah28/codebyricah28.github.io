@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Magical Space For You My Love ✨</title>
+    <style>
+        :root {
+            --bg-dark: #0f0c1b;
+            --card-bg: #1d1833;
+            --accent-gold: #f4d068;
+            --accent-purple: #a855f7;
+            --text-light: #f3f4f6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Avenir', 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            text-align: center;
+            overflow-x: hidden;
+            padding-bottom: 80px;
+        }
+
+        /* Hero Stars Background */
+        .hero {
+            padding: 80px 20px;
+            background: radial-gradient(circle at top, #2e1a47 0%, var(--bg-dark) 70%);
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(244, 208, 104, 0.4);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #b3b3de;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h2 {
+            margin: 40px 0 20px;
+            font-size: 2rem;
+            color: var(--accent-gold);
+        }
+
+        /* Feature 1: The Magic Jar */
+        .jar-section {
+            background: var(--card-bg);
+            border: 1px solid #332a54;
+            border-radius: 20px;
+            padding: 40px 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 40px;
+        }
+
+        .jar-graphic {
+            font-size: 5rem;
+            cursor: pointer;
+            display: inline-block;
+            transition: transform 0.3s ease;
+            filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.5));
+        }
+
+        .jar-graphic:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .note-display {
+            min-height: 80px;
+            margin-top: 25px;
+            padding: 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            border-left: 4px solid var(--accent-purple);
+            font-style: italic;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, var(--accent-gold), #e0b63f);
+            color: #111;
+            border: none;
+            padding: 12px 28px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(244, 208, 104, 0.3);
+            transition: transform 0.2s;
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Feature 2: Interactive Scratch Ticket */
+        .scratch-container {
+            background: var(--card-bg);
+            border: 1px solid #332a54;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .scratch-card {
+            position: relative;
+            width: 300px;
+            height: 150px;
+            background: linear-gradient(45deg, #111, #222);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: inset 0 0 20px rgba(168, 85, 247, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scratch-secret {
+            color: var(--accent-gold);
+            font-size: 1.3rem;
+            font-weight: bold;
+            padding: 10px;
+        }
+
+        .scratch-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #a855f7, #6366f1);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            cursor: pointer;
+            transition: opacity 0.5s ease;
+        }
+
+        .scratch-overlay.revealed {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Feature 3: Mood Capsule Buttons */
+        .mood-grid {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .mood-btn {
+            background: #251f42;
+            border: 1px solid #433673;
+            color: var(--text-light);
+            padding: 12px 20px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1rem;
+        }
+
+        .mood-btn:hover {
+            background: var(--accent-purple);
+            border-color: var(--accent-purple);
+            transform: translateY(-3px);
+        }
+
+        .mood-response {
+            margin-top: 25px;
+            font-size: 1.2rem;
+            color: #d1d5db;
+            min-height: 50px;
+            font-weight: 500;
+        }
+
+        /* Shooting Star Animation Effect */
+        .star {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #fff, 0 0 20px #fff;
+            animation: shoot 3s ease-out infinite;
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        @keyframes shoot {
+            0% { transform: translate(100vw, 0vh) rotate(-45deg) scale(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translate(0vw, 100vh) rotate(-45deg) scale(1); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="star" style="animation-delay: 0s; top: 10%; left: 80%;"></div>
+    <div class="star" style="animation-delay: 1.5s; top: 30%; left: 90%;"></div>
+
+    <div class="hero">
+        <h1>To My Dinosaur ✨</h1>
+        <p>I made this for you kasi mahal na mahal kita HAHAHA, wala ni try ko lang gumawa ng simple website hehez, I hope ypu like it ILOVEYOUUUUUUUUU!!!!!!.</p>
+    </div>
+
+    <div class="container">
+
+        <!-- Section 1: The Magic Note Jar -->
+        <h2>The Virtual Love Jar</h2>
+        <div class="jar-section">
+            <div class="jar-graphic" id="jar" onclick="pullNote()">🫙</div>
+            <p style="color: #b3b3de; margin-top: 10px;">Click the jar to pull out a reason I love you!</p>
+            <div class="note-display" id="noteDisplay">
+                "Click the jar above to read a note..."
+            </div>
+            <button class="btn-gold" onclick="pullNote()">Pull a Note</button>
+        </div>
+
+        <!-- Section 2: Interactive Scratch Ticket -->
+        <h2>A Secret Message For You</h2>
+        <div class="scratch-container">
+            <p style="color: #b3b3de; margin-bottom: 20px;">Wipe away the scratch card below to reveal your prize:</p>
+            <div class="scratch-card">
+                <div class="scratch-secret">🎟️ Prize: 1x Unlimited Back Massage (No Expiry!)</div>
+                <div class="scratch-secret">🎟️ Prize: 1x Unlimited Hugs and Kisses  (No Expiry!)</div
+                <div class="scratch-overlay" id="scratchOverlay" onclick="revealSecret()">
+                    ✨ Tap to Scratch Off ✨
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Dynamic Emotional Capsule -->
+        <h2>How are you feeling right now?</h2>
+        <p style="color: #b3b3de;">Pick your current vibe to open a customized capsule.</p>
+        <div class="mood-grid">
+            <button class="mood-btn" onclick="checkMood('happy')">😊 Happy / Energetic</button>
+            <button class="mood-btn" onclick="checkMood('tired')">😴 Tired / Drained</button>
+            <button class="mood-btn" onclick="checkMood('sad')">🥺 Sad / Missing You</button>
+        </div>
+        <div class="mood-response" id="moodResponse"></div>
+
+    </div>
+
+    <script>
+        // Array of love notes
+        const loveNotes = [
+            "I love how safe I feel whenever you hold my hand. 🤝",
+            "Your determination and work ethic inspire me to be a better version of myself every single day. 🚀",
+            "The way your eyes crinkle when you're genuinely laughing is my absolute favorite sight. 👁️❤️",
+            "I love that we can sit in absolute, comfortable silence and it's still the best part of my day. 🤫✨",
+            "You have this amazing ability to make me smile even when I'm having the worst day ever. 🥹",
+            "I Love Your Smell.",
+            "I Love Your Eyes.",
+            "I Love Your Face.",
+            "I Love Everything About You. 😉"
+        ];
+
+        // Jar Logic
+        let lastNoteIndex = -1;
+        function pullNote() {
+            const jar = document.getElementById('jar');
+            const display = document.getElementById('noteDisplay');
+            
+            // Add shake animation
+            jar.style.transform = "scale(1.1) rotate(10deg)";
+            setTimeout(() => { jar.style.transform = "scale(1) rotate(0deg)"; }, 200);
+
+            // Select a random note ensuring it's not the same as the last one
+            let randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * loveNotes.length);
+            } while (randomIndex === lastNoteIndex);
+            
+            lastNoteIndex = randomIndex;
+
+            // Display note with fade effect
+            display.style.opacity = 0;
+            setTimeout(() => {
+                display.innerText = `"${loveNotes[randomIndex]}"`;
+                display.style.opacity = 1;
+            }, 200);
+        }
+
+        // Scratch Card Logic
+        function revealSecret() {
+            document.getElementById('scratchOverlay').classList.add('revealed');
+        }
+
+        // Mood Capsule Logic
+        function checkMood(mood) {
+            const responseBox = document.getElementById('moodResponse');
+            let message = "";
+
+            if (mood === 'happy') {
+                message = "Hi My Love!!!. I'm Happy because you're happy. IMISSYOUSOMUCH  AND ILOVEYOU ALWAYS AND FOREVER MY ABEGAIL. ❤";
+            } else if (mood === 'tired') {
+                message = "Tired? Don't stress yourself to much okay? Give yourself a break and rest, And always remember that I'm so proud of you in everything you do,Don't push yourself too much okay? I'm Always here for you My Love ❤.";
+            } else if (mood === 'sad') {
+                message = "I wish I could hug you right through this screen. Sending you a massive digital squeeze. I love you endlessly, don't forget it and IMISSYOUSODAMNBAD. ❤️";
+            }
+
+            responseBox.style.opacity = 0;
+            setTimeout(() => {
+                responseBox.innerHTML = message;
+                responseBox.style.opacity = 1;
+            }, 150);
+        }
+    </script>
+</body>
+</html>
